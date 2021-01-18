@@ -1,0 +1,15 @@
+{
+  "data_uoa": "ck-blis-win",
+  "data_uid": "a954b9384adee3f1",
+  "data_alias": "ck-blis-win",
+  "data_name": "ck-blis-win",
+  "dict": {
+    "shared": "git",
+    "url": "https://github.com/phesse001/ck-blis-win"
+  },
+      "repo_deps": [
+      {
+        "repo_uoa": "ck-autotuning"
+      }
+    ]
+}
