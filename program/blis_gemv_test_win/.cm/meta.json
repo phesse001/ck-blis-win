@@ -22,7 +22,7 @@
   "data_name": "blis_gemv_test",
   "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
   "main_language": "c",
-  "process_in_tmp": "yes",
+  "process_in_tmp": "no",
   "program": "yes",
   "run_cmds": {
     "default": {
