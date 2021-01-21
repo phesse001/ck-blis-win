@@ -22,21 +22,17 @@
   "data_name": "blis_gemv_test",
   "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
   "main_language": "c",
-  "process_in_tmp": "no",
+  "process_in_tmp": "yes",
   "program": "yes",
   "run_cmds": {
     "default": {
       "ignore_return_code": "no",
       "run_time": {
+        "pre_process_via_ck": {
+          "script_name": "preprocess"
+        },
         "run_cmd_main": "$#BIN_FILE#$ ",
-        "run_cmd_out1": "tmp-output1.tmp",
-        "run_cmd_out2": "tmp-output2.tmp",
-        "run_correctness_output_files": [
-          "tmp-output2.tmp"
-        ],
-        "run_output_files": [
-          "tmp-ck-timer.json"
-        ]
+        "run_cmd_out1": "gemv-output.json"
       }
     }
   },
