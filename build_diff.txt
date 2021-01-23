@@ -2,3 +2,10 @@ MKL GEMM MAKEFILE BULID
 
 gcc -O2 -fomit-frame-pointer -Wall -Wno-unused-function -Wfatal-errors -fPIC -std=c99 -D_POSIX_C_SOURCE=200112L -I../include/zen2 -DBLIS_VERSION_STRING=\"0.8.0-9\" -I. -DBLAS=\"mkl\" -c test_gemm.c -o test_gemm_mkl.o
 gcc test_gemm_mkl.o             -L/opt/intel/mkl/lib/intel64 -lmkl_intel_lp64 -lmkl_core -lmkl_sequential -lpthread -lm -ldl      ../lib/zen2/libblis.a  -lm -lpthread -lrt -o test_gemm_mkl.x
+
+gcc -c  -DWINDOWS   -I..\ -DBLAS=mkl -DBLIS_VERSION_STRING=0.8.0-9 -DCK_HOST_OS_NAME2_WIN=1 -DCK_HOST_OS_NAME_WIN=1 -DCK_TARGET_OS_NAME2_WIN=1 -DCK_TARGET_OS_NAME_WIN=1 -DPOSIX_C_SOURCE=200112L -I"C:\Users\patri\CK-TOOLS\lib-blis-prebuilt-master-gcc-8.1.0-windows-64\blis\include\blis" -I"C:\Users\patri\CK-TOOLS\lib-blis-prebuilt-master-gcc-8.1.0-windows-64\blis\include\blis"  ..\test_gemm.c  -o test_gemm.o
+gcc  -DWINDOWS    test_gemm.o  -o test_gemm.exe   "C:\Users\patri\CK-TOOLS\lib-blis-prebuilt-master-gcc-8.1.0-windows-64\blis\lib\libblis.3.dll" -lm   -lpthread
+
+*TODO*
+
+make these match more! (maybe some of the flags are removing the functions used in blis so that they have to be used by other linked libs???)
