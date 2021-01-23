@@ -16,11 +16,6 @@
       "local": "yes",
       "name": "Blis library",
       "tags": "lib,blis,prebuilt"
-    },
-    "lib-mkl": {
-      "local": "yes",
-      "name": "MKL library",
-      "tags": "lib,mkl,core,sequential,lp64"
     }
   },
   "compiler_env": "CK_CC",
@@ -38,6 +33,9 @@
     "default": {
       "ignore_return_code": "no",
       "run_time": {
+      "pre_process_via_ck": {
+          "script_name": "preprocess"
+        },
         "run_cmd_main": "$#BIN_FILE#$ ",
         "run_cmd_out1": "tmp-output1.tmp",
         "run_cmd_out2": "tmp-output2.tmp",
