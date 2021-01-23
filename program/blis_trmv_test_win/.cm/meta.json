@@ -2,7 +2,8 @@
   "backup_data_uid": "a6afcccd74900bfe",
   "build_compiler_vars": {
     "BLIS_VERSION_STRING": "0.8.0-9",
-    "POSIX_C_SOURCE": "200112L"
+    "POSIX_C_SOURCE": "200112L",
+    "BLIS":""
   },
   "compile_deps": {
     "compiler": {
@@ -15,7 +16,7 @@
       "local": "yes",
       "name": "Blis library",
       "sort": 80,
-      "tags": "lib,blis"
+      "tags": "lib,blis,prebuilt"
     }
   },
   "compiler_env": "CK_CC",
