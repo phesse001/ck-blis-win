@@ -1,9 +1,9 @@
 {
-  "backup_data_uid": "440ab9f9f5cc69f1",
+  "backup_data_uid": "06938c43ec8ede3d",
   "build_compiler_vars": {
     "BLIS_VERSION_STRING": "0.8.0-9",
     "POSIX_C_SOURCE": "200112L",
-    "BLIS":""
+    "BLAS":"mkl"
   },
   "compile_deps": {
     "compiler": {
@@ -15,38 +15,48 @@
     "lib-blis": {
       "local": "yes",
       "name": "Blis library",
-      "sort": 80,
       "tags": "lib,blis,prebuilt"
     }
   },
   "compiler_env": "CK_CC",
-  "data_name": "blis_gemm_test",
-  "extra_ld_vars": "",
+  "data_name": "mkl_gemm_test_win",
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$ $<<CK_EXTRA_LIB_INTEL_LP64>>$ $<<CK_EXTRA_LIB_SEQUENTIAL>>$ $<<CK_COMPILER_FLAG_PTHREAD_LIB>>$",
+  "extra_libs": [
+    "sequential",
+    "lp64"
+  ],
   "main_language": "c",
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
   "process_in_tmp": "yes",
   "program": "yes",
+  "include_dirs":["C:\\Users\\patri\\CK-TOOLS\\lib-blis-prebuilt-master-gcc-8.1.0-windows-64\\blis\\include\\blis"],
   "run_cmds": {
     "default": {
       "ignore_return_code": "no",
       "run_time": {
-      	"pre_process_via_ck": {
+      "pre_process_via_ck": {
           "script_name": "preprocess"
         },
         "run_cmd_main": "$#BIN_FILE#$ ",
-        "run_cmd_out1": "gemm-output.json"
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
+        "run_correctness_output_files": [
+          "tmp-output2.tmp"
+        ],
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
       }
     }
   },
   "run_vars": {
-    "BLAS": "blis"
+    "BLAS": "mkl"
   },
   "source_files": [
     "test_gemm.c"
   ],
   "tags": [
     "gemm",
-    "blis",
+    "mkl",
     "test"
   ],
   "target_file": "test_gemm"
