@@ -8,9 +8,9 @@
   "compile_deps": {
     "compiler": {
       "local": "yes",
-      "name": "C++ compiler",
+      "name": "C compiler",
       "sort": 10,
-      "tags": "compiler,lang-cpp"
+      "tags": "compiler,lang-c,gcc"
     },
     "lib-blis": {
       "local": "yes",
@@ -21,7 +21,7 @@
   },
   "compiler_env": "CK_CC",
   "data_name": "blis_trsm_test_win",
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$ $<<CK_COMPILER_FLAG_PTHREAD_LIB>>$",
   "main_language": "c",
   "process_in_tmp": "yes",
   "program": "yes",

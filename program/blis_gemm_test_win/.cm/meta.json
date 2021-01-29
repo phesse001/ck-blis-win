@@ -10,7 +10,7 @@
       "local": "yes",
       "name": "C compiler",
       "sort": 10,
-      "tags": "compiler,lang-c"
+      "tags": "compiler,lang-c,gcc"
     },
     "lib-blis": {
       "local": "yes",
@@ -23,7 +23,7 @@
   "data_name": "blis_gemm_test",
   "extra_ld_vars": "",
   "main_language": "c",
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$ $<<CK_COMPILER_FLAG_PTHREAD_LIB>>$",
   "process_in_tmp": "yes",
   "program": "yes",
   "run_cmds": {

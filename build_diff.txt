@@ -9,3 +9,17 @@ gcc  -DWINDOWS    test_gemm.o  -o test_gemm.exe   "C:\Users\patri\CK-TOOLS\lib-b
 *TODO*
 
 make these match more! (maybe some of the flags are removing the functions used in blis so that they have to be used by other linked libs???)
+
+NEW
+
+gcc -O2 -fomit-frame-pointer -Wall -Wno-unused-function -Wfatal-errors -fPIC -std=c99 -D_POSIX_C_SOURCE=200112L -I"C:\Users\patri\CK-TOOLS\lib-blis-prebuilt-master-gcc-8.1.0-windows-64\blis\include\blis" -DBLIS_VERSION_STRING=\"0.8.0-9\" -I. -DBLAS=\"mkl\" -c ..\test_gemm.c -o test_gemm.o
+
+gcc test_gemm.o -L"C:\Program Files (x86)\Intel\oneAPI\mkl\2021.1.1\lib\intel64" -lmkl_intel_lp64 -lmkl_core -lmkl_sequential -lpthread -lm "C:\Users\patri\CK-TOOLS\lib-blis-prebuilt-master-gcc-8.1.0-windows-64\blis\lib\libblis.3.dll" -lm -lpthread -o test_gemm_mkl.exe
+
+gcc dgemm_ex.o mkl_intel_ilp64.lib mkl_sequential.lib mkl_core.lib -o dgemm_ex.exe
+
+gcc -O2 -fomit-frame-pointer -Wall -Wno-unused-function -Wfatal-errors -fPIC -std=c99 -D_POSIX_C_SOURCE=200112L -DMKL_ILP64 -I"C:\Program Files (x86)\Intel\oneAPI\mkl\2021.1.1\include" -c dgemm_ex.c -o dgemm_ex.o
+
+cl /c /DWINDOWS /GS- /MD /DMKL_ILP64  -I"%MKLROOT%\include" dgemm_ex.c  /Fetest_gemm.obj
+
+cl /EHsc /GA /DMKL_ILP64 /I"%MKLROOT%\include" dgemm_ex.c mkl_intel_ilp64.lib mkl_sequential.lib mkl_core.lib
